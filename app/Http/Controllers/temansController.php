@@ -47,7 +47,7 @@ class temansController extends Controller
             'updated_at' => now(),
         ]);
 
-        return redirect('/temans')->with('success', 'Data berhasil ditambahkan!');
+        return redirect('/teman')->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**

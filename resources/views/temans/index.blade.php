@@ -1,6 +1,6 @@
 <div class="container">
     <h3>Data Teman</h3>
-
+    <a href="{{ route('teman.create') }}">Tambah Data</a>
     <table>      
         <thead>
             <tr>
