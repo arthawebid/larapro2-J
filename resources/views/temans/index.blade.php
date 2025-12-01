@@ -13,8 +13,8 @@
             @foreach($dta as $dt)
             <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>{{ $dt['nama'] }}</td>
-                <td><a href="{{ route('teman.edit', $dt['id'])  }}"> Ubah </a> | Hapus</td>
+                <td>{{ $dt->nama }}</td>
+                <td><a href="{{ route('teman.edit', $dt->id)  }}"> Ubah </a> | Hapus</td>
             </tr>
             @endforeach
 
