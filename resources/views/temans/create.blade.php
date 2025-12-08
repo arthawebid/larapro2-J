@@ -3,7 +3,7 @@
 
 <form action="{{ route('teman.store') }}" method="POST">
     @csrf
-    @include('temans.forms', ['submit'=>'TambahData'] )
+    @include('temans.forms', ['submit'=>'Tambah Data'] )
 
 </form>
 
