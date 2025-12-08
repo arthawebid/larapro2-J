@@ -63,7 +63,8 @@ class temansController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $dta = DB::table('temans')->where('id',$id)->first();
+        return view('temans.edit',compact('dta'));
     }
 
     /**
