@@ -72,7 +72,24 @@ class temansController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // validasi
+        $request->validate([
+            'nama' => 'required',
+            'alamat' => 'required',
+            'kota' => 'required',
+            'noTelp' => 'required'
+        ]);
+        
+        // update
+        DB::table('temans')->where('id',$id)->update([
+            'nama' => $request->nama,
+            'alamat' => $request->alamat,
+            'kota' => $request->kota,
+            'noTelp' => $request->noTelp,
+            'updated_at' => now(),
+        ]);
+
+        return redirect('/teman')->with('success', 'Data berhasil di ubah!');
     }
 
     /**
