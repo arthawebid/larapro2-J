@@ -1,3 +1,6 @@
+@extends('template.app')
+@section('TITLE','Tambah Data Teman')
+@section('KONTEN')
 <div class="container">
 <h2>Form Tambah Teman</h2>
 
@@ -8,3 +11,4 @@
 </form>
 
 </div>
+@endsection
