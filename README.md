@@ -1,5 +1,5 @@
 ## Menggunakan Laravel
-1. clone repositories ini atau [download](https://github.com/arthawebid/projectLaravel-kelasB/archive/refs/heads/main.zip) 
+1. clone repositories ini atau [download](https://github.com/arthawebid/larapro2-J.git) 
 2. copy dan timpa (rewrite) file php.bak ke c:\xampp\php\php.ini
 ```bash
 copy php.bak c:\xampp\php\php.ini
