@@ -14,7 +14,13 @@
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $dt->nama }}</td>
-                <td><a href="{{ route('teman.edit', $dt->id)  }}"> Ubah </a> | Hapus</td>
+                <td><a href="{{ route('teman.edit', $dt->id)  }}"> Ubah </a> 
+                    <form action="{{ route('teman.destroy', $dt->id) }}" method="POST">    
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" onclick="return confirm('Yakin Akan Menghapus Data?')">Hapus</button>
+                    </form>
+                </td>
             </tr>
             @endforeach
 

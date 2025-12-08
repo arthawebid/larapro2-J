@@ -97,6 +97,7 @@ class temansController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        DB::table('temans')->where('id',$id)->delete();
+        return redirect('/teman')->with('success', 'Data berhasil di Hapus!');
     }
 }
