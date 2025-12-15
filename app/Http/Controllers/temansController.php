@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\facades\DB;
+use App\Models\temans;
 
 class temansController extends Controller
 {
@@ -12,7 +13,8 @@ class temansController extends Controller
      */
     public function index()
     {
-        $dta = DB::table('temans')->get();
+        //$dta = DB::table('temans')->get();
+        $dta = temans::all();
         return view('temans.index',compact('dta')); 
     }
 
@@ -30,7 +32,7 @@ class temansController extends Controller
     public function store(Request $request)
     {
         // validasi
-        $request->validate([
+        $data = $request->validate([
             'nama' => 'required',
             'alamat' => 'required',
             'kota' => 'required',
@@ -38,14 +40,16 @@ class temansController extends Controller
         ]);
 
         // insert data
-        DB::table('temans')->insert([
+        
+        /* DB::table('temans')->insert([
             'nama'   => $request->nama,
             'alamat' => $request->alamat,
             'kota'   => $request->kota,
             'noTelp' => $request->noTelp,
             'created_at' => now(),
             'updated_at' => now(),
-        ]);
+        ]); */
+        temans::create($data);
 
         return redirect('/teman')->with('success', 'Data berhasil ditambahkan!');
     }
@@ -63,17 +67,18 @@ class temansController extends Controller
      */
     public function edit(string $id)
     {
-        $dta = DB::table('temans')->where('id',$id)->first();
+        //$dta = DB::table('temans')->where('id',$id)->first();
+        $dta = temans::findOrFail($id);
         return view('temans.edit',compact('dta'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, temans $teman)
     {
         // validasi
-        $request->validate([
+        $data = $request->validate([
             'nama' => 'required',
             'alamat' => 'required',
             'kota' => 'required',
@@ -81,13 +86,15 @@ class temansController extends Controller
         ]);
         
         // update
-        DB::table('temans')->where('id',$id)->update([
+        /* DB::table('temans')->where('id',$id)->update([
             'nama' => $request->nama,
             'alamat' => $request->alamat,
             'kota' => $request->kota,
             'noTelp' => $request->noTelp,
             'updated_at' => now(),
-        ]);
+        ]); */
+        //$dta = temans::findOrFail($id);
+        $teman->update($data);
 
         return redirect('/teman')->with('success', 'Data berhasil di ubah!');
     }
@@ -97,7 +104,9 @@ class temansController extends Controller
      */
     public function destroy(string $id)
     {
-        DB::table('temans')->where('id',$id)->delete();
+        //DB::table('temans')->where('id',$id)->delete();
+        $dta = temans::findOrFail($id);
+        $dta->delete();
         return redirect('/teman')->with('success', 'Data berhasil di Hapus!');
     }
 }
